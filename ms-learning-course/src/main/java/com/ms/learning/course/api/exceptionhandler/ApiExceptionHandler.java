@@ -34,8 +34,8 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
-	private static final String MSG_ERRO_GENERICA_USUARIO_FINAL = "Ocorreu um erro interno inesperado no sistema. "
-			+ "Tente novamente e se o problema persistir, entre em contato " + "com o administrador do sistema.";
+	private static final String MSG_ERRO_GENERICA_USUARIO_FINAL = "An unexpected internal system error has occurred. "
+			+ "Try again and if the problem persists, contact your system administrator.";
 
 	@Autowired
 	private MessageSource messageSource;
@@ -44,7 +44,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 															HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
 		ProblemType problemType = ProblemType.DADOS_INVALIDOS;
-		String detail = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.";
+		String detail = "One or more fields are invalid. Fill in the correct form and try again.";
 
 		List<Problem.Object> problemObjects = bindingResult.getAllErrors().stream().map(objectError -> {
 			String message = messageSource.getMessage(objectError, LocaleContextHolder.getLocale());
@@ -74,7 +74,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 																  HttpHeaders headers, HttpStatusCode status, WebRequest request) {
 
 		ProblemType problemType = ProblemType.DADOS_INVALIDOS;
-		String detail = "Um ou mais campos estão inválidos. Faça o preenchimento correto e tente novamente.";
+		String detail = "One or more fields are invalid. Fill in the correct form and try again.";
 
 		BindingResult bildBindingResult = ex.getBindingResult();
 
@@ -115,7 +115,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 																   HttpStatusCode status, WebRequest request) {
 
 		ProblemType problemType = ProblemType.RECURSO_NAO_ENCONTRADO;
-		String detail = String.format("O recurso %s, que você tentou acessar, é inexistente.", ex.getRequestURL());
+		String detail = String.format("The resource %s, that you tried to access, is non-existent.", ex.getRequestURL());
 
 		Problem problem = createProblemBuilder(status, problemType, detail).userMessage(detail).build();
 
@@ -139,8 +139,9 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		ProblemType problemType = ProblemType.PARAMETRO_INVALIDO;
 
 		String detail = String.format(
-				"O parâmetro de URL '%s' recebeu o valor '%s', "
-						+ "que é de um tipo inválido. Corrija e informe um valor compatível com o tipo %s.",
+
+				"The URL parameter '%s' was given the value '%s', "
+						+ "which is of an invalid type. Correct and enter a value compatible with type %s.",
 				ex.getName(), ex.getValue(), ex.getRequiredType().getSimpleName());
 
 		Problem problem = createProblemBuilder(status, problemType, detail).userMessage(detail).build();
@@ -155,8 +156,8 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 		ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
 		String detail = String.format(
-				"A propriedade '%s' recebeu o valor '%s', "
-						+ "que é de um tipo inválido. Corrija e informe um valor compatível com o tipo %s.",
+				"Property '%s' has value '%s', "
+						+ "which is of an invalid type. Correct and enter a value compatible with type %s.",
 				path, ex.getValue(), ex.getTargetType().getSimpleName());
 
 		Problem problem = createProblemBuilder(status, problemType, detail).userMessage(MSG_ERRO_GENERICA_USUARIO_FINAL)
@@ -178,7 +179,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
 		ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
 		String detail = String.format(
-				"A propriedade '%s' não existe. " + "Corrija ou remova essa propriedade e tente novamente.", path);
+				"Property '%s' does not exist. " + "Correct or remove this property and try again.", path);
 
 		Problem problem = createProblemBuilder(status, problemType, detail).userMessage(MSG_ERRO_GENERICA_USUARIO_FINAL)
 				.build();
@@ -198,7 +199,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		}
 
 		ProblemType problemType = ProblemType.MENSAGEM_INCOMPREENSIVEL;
-		String detail = "O corpo da requisição está inválido. Verifique erro de sintaxe.";
+		String detail = "Request body is invalid. Check syntax error.";
 
 		Problem problem = createProblemBuilder(status, problemType, detail).userMessage(detail).build();
 

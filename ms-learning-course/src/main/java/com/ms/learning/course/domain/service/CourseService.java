@@ -1,17 +1,17 @@
 package com.ms.learning.course.domain.service;
 
-import com.ms.learning.course.domain.model.Course;
+import com.ms.learning.course.api.dto.CourseDTO;
+import com.ms.learning.course.api.dto.input.CourseInput;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 public interface CourseService {
 
-    Optional<Course> findByCourseId(UUID courseId);
+    CourseDTO findByCourseId(UUID courseId);
 
-    Optional<List<Course>> findAllCourses();
+    List<CourseDTO> findAllCourses();
 
-    Course save(Course course);
+    CourseDTO save(CourseInput course);
 
 }

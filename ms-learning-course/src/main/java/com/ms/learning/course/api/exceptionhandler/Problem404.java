@@ -11,25 +11,25 @@ import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
 @Builder
-@Schema(name = "Problem")
-public class Problem {
+@Schema(name = "Problem404")
+public class Problem404 {
 
-	@Schema(example = "400")
+	@Schema(example = "404")
 	private Integer status;
 
-	@Schema(example = "2023-02-14T09:56:28.743Z")
+	@Schema(example = "2023-02-13T20:28:22-03:00")
 	private OffsetDateTime timestamp;
 
-	@Schema(example = "https://localhost:8081/dados-invalidos")
+	@Schema(example = "https://localhost:8081/resource-not-found")
 	private String type;
 
-	@Schema(example = "Incomplete or invalid fields.")
+	@Schema(example = "Resource not found")
 	private String title;
 
-	@Schema(example = "One or more fields are invalid, fill in the correct form and try again.")
+	@Schema(example = "Resource x, which you tried to access, is non-existent.")
 	private String detail;
 
-	@Schema(example = "One or more fields are invalid, fill in the correct form and try again.")
+	@Schema(example = "Resource x, which you tried to access, is non-existent.")
 	private String userMessage;
 
 	@Schema(example = "Objects or fields that generated the error")

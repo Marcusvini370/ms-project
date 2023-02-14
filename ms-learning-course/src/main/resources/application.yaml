@@ -10,11 +10,7 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
+
 server:
   port: 8081
 
-#logging:
-#  level:
-#    org:
-#      springframework:
-#        web: DEBUG,ERROR

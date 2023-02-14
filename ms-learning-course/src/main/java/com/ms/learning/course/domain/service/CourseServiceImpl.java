@@ -1,5 +1,9 @@
 package com.ms.learning.course.domain.service;
 
+import com.ms.learning.course.api.assembler.CourseInputDissasembler;
+import com.ms.learning.course.api.assembler.CourseModelAssembler;
+import com.ms.learning.course.api.dto.CourseDTO;
+import com.ms.learning.course.api.dto.input.CourseInput;
 import com.ms.learning.course.domain.exception.CourseLengthException;
 import com.ms.learning.course.domain.exception.CourseNotFoundException;
 import com.ms.learning.course.domain.exception.CourseUniqueException;
@@ -19,33 +23,42 @@ public class CourseServiceImpl implements CourseService{
     @Autowired
     private CourseRepository courseRepository;
 
+    @Autowired
+    private CourseModelAssembler courseModelAssembler;
+
+    @Autowired
+    private CourseInputDissasembler courseInputDissasembler;
+
 
     @Override
-    public Optional<Course> findByCourseId(UUID courseId) {
-        return Optional.ofNullable(searchOrFailed(courseId));
+    public CourseDTO findByCourseId(UUID courseId) {
+        return courseModelAssembler.toModel(searchOrFailed(courseId));
     }
 
     @Override
-    public Optional<List<Course>> findAllCourses() {
-        return Optional.of(courseRepository.findAll());
+    public List<CourseDTO> findAllCourses() {
+        return courseModelAssembler.toCollectionModel(courseRepository.findAll());
     }
 
     @Override
-    public Course save(Course course) {
+    public CourseDTO save(CourseInput courseInput) {
 
-        if(course.getCourseName().length() <= 3){
-            throw new CourseLengthException(String.format("Course name must contain more than 3 characters"));
+        if(courseInput.getCourseName() == null || courseInput.getCourseName().length() <= 3){
+            throw new CourseLengthException(String.format("CourseName must contain more than 3 characters"));
         }
 
-        Optional<Course> validCourse = courseRepository.findByCourseName(course.getCourseName());
+        Optional<Course> validCourse = courseRepository.findByCourseName(courseInput.getCourseName());
         if (validCourse.isPresent()){
             throw new CourseUniqueException(String.format("There is already a course registered with that name"));
         }
 
-        course.setCourseId(UUID.randomUUID());
-        course.setStatus(true);
-        course.setCreatedOn(OffsetDateTime.now());
-        return courseRepository.save(course);
+        courseInput.setCourseId(UUID.randomUUID());
+        courseInput.setStatus(true);
+        courseInput.setCreatedOn(OffsetDateTime.now());
+
+        Course course = courseInputDissasembler.toDomainObject(courseInput);
+
+        return courseModelAssembler.toModel(courseRepository.save(course));
     }
 
     public Course searchOrFailed(UUID courseId) {
