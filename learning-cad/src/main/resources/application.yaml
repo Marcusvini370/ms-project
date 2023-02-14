@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: student
+  data:
+    mongodb:
+      database: learning_cad
+      port: 27017
+      host: localhost
+      repositories:
+        enabled: true
+
+server:
+  port: 8082
