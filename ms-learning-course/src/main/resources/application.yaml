@@ -5,7 +5,7 @@ spring:
     mongodb:
       database: learning_course
       port: 27017
-      host: course-mongodb
+      host: {localhost:course-mongodb}
       repositories:
         enabled: true
 
