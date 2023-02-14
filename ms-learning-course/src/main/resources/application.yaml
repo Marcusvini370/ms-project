@@ -1,4 +1,20 @@
 spring:
+  application:
+    name: course
   data:
     mongodb:
       uri: mongodb://localhost:27017/learning_course
+      repositories:
+        enabled: true
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+server:
+  port: 8081
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        web: DEBUG,ERROR
