@@ -7,8 +7,10 @@ networks:
 services:
   course-mongodb:
     image: mongo
+    container_name: "course-mongodb"
     ports:
       - "27017:27017"
+      - "23456:28017"
     environment:
       MONGODB_APPLICATION_DATABASE: learning_course
     networks:
@@ -16,9 +18,11 @@ services:
 
   course-api:
     image: course-api
-    command: ["/wait-for-it.sh", "course-mongodb:27017", "-t", "30", "--", "java", "-jar", "api.jar"]
+    #command: ["/wait-for-it.sh", "course-mongodb:27017", "-t", "30", "--", "java", "-jar", "api.jar"]
     environment:
-      DB_HOST: course-mongodb
+       - MONGODB_URI=mongodb://course-mongodb:27017/learning_course
+       - MONGODB_STATUS_HOST=course-mongodb
+       - MONGODB_STATUS_PORT=28017
     ports:
       - "8081:8081"
     networks:

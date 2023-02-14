@@ -3,7 +3,9 @@ spring:
     name: course
   data:
     mongodb:
-      uri: mongodb://localhost:27017/learning_course
+      database: learning_course
+      port: 27017
+      host: course-mongodb
       repositories:
         enabled: true
 
