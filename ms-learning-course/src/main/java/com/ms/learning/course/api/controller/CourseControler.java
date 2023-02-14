@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("/api/v1/course")
 public class CourseControler implements CourseControllerOpenApi {
 
     @Autowired

@@ -1,0 +1,27 @@
+version: "3.9"
+
+networks:
+  course-network:
+    driver: bridge
+
+services:
+  course-mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGODB_APPLICATION_DATABASE: learning_course
+    networks:
+      - course-network
+
+  course-api:
+    image: course-api
+    command: ["/wait-for-it.sh", "course-mongodb:27017", "-t", "30", "--", "java", "-jar", "api.jar"]
+    environment:
+      DB_HOST: course-mongodb
+    ports:
+      - "8081:8081"
+    networks:
+      - course-network
+    depends_on:
+      - course-mongodb
