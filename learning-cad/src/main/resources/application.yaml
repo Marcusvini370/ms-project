@@ -5,15 +5,16 @@ spring:
     mongodb:
       database: learning_cad
       port: 27017
-      host: localhost
+      host: {localhost:student-mongodb}
       repositories:
         enabled: true
 
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
-#  kafka:
-#    bootstrap-servers: localhost:9092
+
+  kafka:
+    bootstrap-servers: localhost:29092
 
 server:
   port: 8082

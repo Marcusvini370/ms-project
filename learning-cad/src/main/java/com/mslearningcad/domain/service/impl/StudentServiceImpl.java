@@ -46,7 +46,7 @@ public class StudentServiceImpl implements StudentService {
         student.setStatus(true);
         student.setCreatedOn(LocalDateTime.now());
         studentModelAssembler.toModel(studentRepository.save(student));
-        //eventService.sendEventToKafka(student);
+        eventService.sendEventToKafka(student);
 
         return  studentInputDissasembler.copyToDomainObject(student, StudentIdInput.class);
 

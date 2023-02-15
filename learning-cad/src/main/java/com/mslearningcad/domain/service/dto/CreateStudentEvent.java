@@ -12,4 +12,13 @@ public class CreateStudentEvent implements Serializable {
     private UUID studentId;
     private String fullName;
     private UUID courseId;
+
+    @Override
+    public String toString() {
+        return "CreateStudentEvent{" +
+                "studentId=" + studentId +
+                ", fullName='" + fullName + '\'' +
+                ", courseId=" + courseId +
+                '}';
+    }
 }
