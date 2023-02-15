@@ -13,6 +13,7 @@ import com.mslearningcad.domain.model.Student;
 import com.mslearningcad.domain.repository.StudentRepository;
 import com.mslearningcad.domain.service.EventService;
 import com.mslearningcad.domain.service.StudentService;
+import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,11 +37,9 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentIdInput createStudent(StudentInput studentInput) {
 
-        CourseDTO course = courseClient.getCourseId(studentInput.getCourseId()).getBody();
+        try {
 
-        if (course == null){
-            throw new CourseNotFoundException(String.format("No Course found with courseID %s", studentInput.getCourseId()));
-        }
+        CourseDTO course = courseClient.getCourseId(studentInput.getCourseId()).getBody();
 
         Student student = studentInputDissasembler.toDomainObject(studentInput);
         student.setStudentId(UUID.randomUUID());
@@ -49,8 +48,11 @@ public class StudentServiceImpl implements StudentService {
         studentModelAssembler.toModel(studentRepository.save(student));
         //eventService.sendEventToKafka(student);
 
-
         return  studentInputDissasembler.copyToDomainObject(student, StudentIdInput.class);
+
+        }catch (FeignException.NotFound e) {
+            throw new CourseNotFoundException(String.format("No Course found with courseID %s", studentInput.getCourseId()));
+        }
     }
 
     @Override
