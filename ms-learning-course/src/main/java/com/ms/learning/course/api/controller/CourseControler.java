@@ -26,7 +26,7 @@ public class CourseControler implements CourseControllerOpenApi {
     }
 
     @GetMapping("/{courseId}")
-    public ResponseEntity<CourseDTO> findByCourseId(@Parameter(description = "ID de um cliente", example = "1", required = true) UUID courseId){
+    public ResponseEntity<CourseDTO> findByCourseId(@PathVariable UUID courseId){
         return ResponseEntity.ok(courseService.findByCourseId(courseId));
     }
 

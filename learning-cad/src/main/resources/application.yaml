@@ -9,5 +9,11 @@ spring:
       repositories:
         enabled: true
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  kafka:
+    bootstrap-servers: localhost:9092
+
 server:
   port: 8082

@@ -11,6 +11,7 @@ import com.mslearningcad.domain.exception.CourseNotFoundException;
 import com.mslearningcad.domain.exception.StudentNotFoundException;
 import com.mslearningcad.domain.model.Student;
 import com.mslearningcad.domain.repository.StudentRepository;
+import com.mslearningcad.domain.service.EventService;
 import com.mslearningcad.domain.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class StudentServiceImpl implements StudentService {
     private final StudentModelAssembler studentModelAssembler;
 
     private final CourseClient courseClient;
+    private final EventService eventService;
+
 
     @Override
     public StudentIdInput createStudent(StudentInput studentInput) {
@@ -44,6 +47,8 @@ public class StudentServiceImpl implements StudentService {
         student.setStatus(true);
         student.setCreatedOn(LocalDateTime.now());
         studentModelAssembler.toModel(studentRepository.save(student));
+        eventService.sendEventToKafka(student);
+
 
         return  studentInputDissasembler.copyToDomainObject(student, StudentIdInput.class);
     }

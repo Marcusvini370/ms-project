@@ -1,6 +1,5 @@
 package com.mslearningcad.api.dto;
 
-import com.mslearningcad.domain.model.Student;
 import lombok.Getter;
 import lombok.Setter;
 

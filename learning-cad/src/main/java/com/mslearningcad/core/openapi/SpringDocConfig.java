@@ -1,8 +1,11 @@
-package com.ms.learning.course.core.openapi;
+package com.mslearningcad.core.openapi;
 
 import com.ms.learning.course.api.exceptionhandler.Problem;
 import com.ms.learning.course.api.exceptionhandler.Problem404;
 import com.ms.learning.course.api.exceptionhandler.Problem500;
+import com.mslearningcad.api.exceptionhandler.Problem;
+import com.mslearningcad.api.exceptionhandler.Problem404;
+import com.mslearningcad.api.exceptionhandler.Problem500;
 import io.swagger.v3.core.converter.ModelConverters;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -36,7 +39,7 @@ public class SpringDocConfig {
     public OpenAPI openAPIv1() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Course API")
+                        .title("Student API")
                         .version("v1")
                         .description("REST API do Serviço Learning Course")
                         .license(new License()
@@ -49,7 +52,7 @@ public class SpringDocConfig {
                                 .url("https://github.com/Marcusvini370/Alga-Food"))
                 )
                 .tags(Arrays.asList(
-                        new Tag().name("Courses").description("Gerencia os Cursos")
+                        new Tag().name("Students").description("Gerencia os Estudantes")
                 )).components(new Components()
                         .schemas(gerarSchemas())
                         .responses(gerarResponses())
