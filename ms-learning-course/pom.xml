@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ms.leraning.course</groupId>
-	<artifactId>learning_couse</artifactId>
+	<artifactId>ms-learning-course</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms learning course</name>
 	<description>Demo project for Spring Boot</description>
