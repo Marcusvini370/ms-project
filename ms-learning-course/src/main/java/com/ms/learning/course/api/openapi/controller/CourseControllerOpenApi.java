@@ -36,7 +36,7 @@ public interface CourseControllerOpenApi {
             })
      ResponseEntity<CourseDTO> findByCourseId(@PathVariable UUID courseId);
 
-    @Operation(summary = "Create a new cours")
+    @Operation(summary = "Create a new course")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Created course"),
             @ApiResponse(responseCode = "400", description = "Course already exists!")

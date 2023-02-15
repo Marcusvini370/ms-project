@@ -12,8 +12,8 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant-path-matcher
-  kafka:
-    bootstrap-servers: localhost:9092
+#  kafka:
+#    bootstrap-servers: localhost:9092
 
 server:
   port: 8082

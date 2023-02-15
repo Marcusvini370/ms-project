@@ -1,8 +1,5 @@
 package com.mslearningcad.core.openapi;
 
-import com.ms.learning.course.api.exceptionhandler.Problem;
-import com.ms.learning.course.api.exceptionhandler.Problem404;
-import com.ms.learning.course.api.exceptionhandler.Problem500;
 import com.mslearningcad.api.exceptionhandler.Problem;
 import com.mslearningcad.api.exceptionhandler.Problem404;
 import com.mslearningcad.api.exceptionhandler.Problem500;
@@ -41,7 +38,7 @@ public class SpringDocConfig {
                 .info(new Info()
                         .title("Student API")
                         .version("v1")
-                        .description("REST API do Serviço Learning Course")
+                        .description("REST API do Serviço Learning Student")
                         .license(new License()
                                 .name("Apache 2.0")
                                 .url("https://springdoc.org/")
