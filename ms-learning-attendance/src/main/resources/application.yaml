@@ -7,9 +7,12 @@ spring:
     port: 6379 # porta do servidor Redis
     password:  # senha do servidor Redis (opcional
 
+  kafka:
+    bootstrap-servers: localhost:29092
+    group-id: group-create-student
 
-
-
+topic:
+  name: student-topic
 
 
 server:
