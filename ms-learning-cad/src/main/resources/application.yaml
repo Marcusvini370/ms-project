@@ -1,6 +1,6 @@
 spring:
   application:
-    name: student
+    name: ms-learning-cad
   data:
     mongodb:
       database: learning_cad

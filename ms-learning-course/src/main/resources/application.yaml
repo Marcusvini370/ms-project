@@ -1,6 +1,6 @@
 spring:
   application:
-    name: course
+    name: ms-learning-course
   data:
     mongodb:
       database: learning_course

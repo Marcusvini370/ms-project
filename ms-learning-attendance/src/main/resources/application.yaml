@@ -1,5 +1,7 @@
 
 spring:
+  application:
+    name: ms-learning-attendance
   redis:
     host: localhost # endereço do servidor Redis
     port: 6379 # porta do servidor Redis
