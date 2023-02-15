@@ -3,6 +3,7 @@ package com.mslearningcad.api.controller;
 import com.mslearningcad.api.dto.StudentDTO;
 import com.mslearningcad.api.dto.input.StudentIdInput;
 import com.mslearningcad.api.dto.input.StudentInput;
+import com.mslearningcad.api.openapi.controller.StudentOpenApiController;
 import com.mslearningcad.domain.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("api/v1/student")
-public class StudentController {
+public class StudentController implements StudentOpenApiController {
 
     @Autowired
     private StudentService studentService;

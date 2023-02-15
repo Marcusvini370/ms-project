@@ -3,7 +3,6 @@ package com.mslearningcad.api.openapi.controller;
 import com.mslearningcad.api.dto.StudentDTO;
 import com.mslearningcad.api.dto.input.StudentIdInput;
 import com.mslearningcad.api.dto.input.StudentInput;
-import com.mslearningcad.domain.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -11,15 +10,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @Tag(name = "Students")
-public interface StudentController {
+public interface StudentOpenApiController {
 
     @Operation(summary = "Search for a course by studentId",
             responses = {
