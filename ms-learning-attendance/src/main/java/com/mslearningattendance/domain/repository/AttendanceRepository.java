@@ -10,9 +10,6 @@ import java.util.UUID;
 @Repository
 public interface AttendanceRepository extends CrudRepository<Attendance, UUID> {
 
-    List<Attendance> findByStudentId(UUID studentId);
+    List<Attendance> findBystudentId(UUID studentId);
 
-    List<Attendance> findAllByStudentId(UUID studentId);
-
-    List<Attendance> findAllById(UUID studentId);
 }

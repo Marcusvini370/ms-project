@@ -6,6 +6,7 @@ import com.mslearningattendance.api.openapi.controller.AttendanceOpenApiControll
 import com.mslearningattendance.domain.service.AttendanceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -26,7 +27,7 @@ public class AttendanceController implements AttendanceOpenApiController {
     }
 
     @GetMapping("student/{studentId}/attendances")
-    public GetAttendanceDTO getAttendancesByStudent(@PathVariable UUID studentId) {
-        return attendanceService.getAttendancesByStudent(studentId);
+    public ResponseEntity<GetAttendanceDTO> getAttendancesByStudent(@PathVariable UUID studentId) {
+        return ResponseEntity.ok(attendanceService.getAttendancesByStudent(studentId));
     }
 }

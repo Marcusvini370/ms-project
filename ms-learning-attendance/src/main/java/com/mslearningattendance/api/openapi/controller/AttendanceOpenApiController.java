@@ -8,8 +8,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.UUID;
 
@@ -38,5 +39,5 @@ public interface AttendanceOpenApiController {
                             content = @Content(schema = @Schema(ref = "Problem500"))
                     )
             })
-     GetAttendanceDTO getAttendancesByStudent(UUID studentId);
+    ResponseEntity<GetAttendanceDTO> getAttendancesByStudent(UUID studentId);
 }
