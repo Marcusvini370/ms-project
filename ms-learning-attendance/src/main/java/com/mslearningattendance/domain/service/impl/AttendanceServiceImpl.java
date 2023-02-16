@@ -54,9 +54,9 @@ public class AttendanceServiceImpl implements AttendanceService {
         getAttendanceDTO.setCourseName(courseDTO.getCourseName());
         attendanceRepository.findAll();
 
-        List<AttendancesDTO> attendances = attendanceRepository.findAllByStudentId(student.getStudentId());
+        List<Attendance> attendances = attendanceRepository.findByStudentId(student.getStudentId());
 
-        getAttendanceDTO.setAttendancesDTO(attendances);
+       // getAttendanceDTO.setAttendancesDTO(attendances);
 
 
         return getAttendanceDTO;

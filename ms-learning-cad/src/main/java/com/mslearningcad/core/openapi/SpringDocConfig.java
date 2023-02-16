@@ -46,7 +46,7 @@ public class SpringDocConfig {
                         .contact(new Contact()
                                 .name("Marcus Vinicius")
                                 .email("marcusvini370@gmail.com")
-                                .url("https://github.com/Marcusvini370/Alga-Food"))
+                                .url("https://github.com/Marcusvini370/ms-project"))
                 )
                 .tags(Arrays.asList(
                         new Tag().name("Students").description("Gerencia os Estudantes")

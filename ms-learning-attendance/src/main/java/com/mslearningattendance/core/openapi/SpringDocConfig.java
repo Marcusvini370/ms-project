@@ -1,8 +1,9 @@
-package com.ms.learning.course.core.openapi;
+package com.mslearningattendance.core.openapi;
 
-import com.ms.learning.course.api.exceptionhandler.Problem;
-import com.ms.learning.course.api.exceptionhandler.Problem404;
-import com.ms.learning.course.api.exceptionhandler.Problem500;
+
+import com.mslearningattendance.api.exceptionhandler.Problem;
+import com.mslearningattendance.api.exceptionhandler.Problem404;
+import com.mslearningattendance.api.exceptionhandler.Problem500;
 import io.swagger.v3.core.converter.ModelConverters;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -38,7 +39,7 @@ public class SpringDocConfig {
                 .info(new Info()
                         .title("Course API")
                         .version("v1")
-                        .description("REST API do Serviço Learning Course")
+                        .description("REST API do Serviço Learning Attendance")
                         .license(new License()
                                 .name("Apache 2.0")
                                 .url("https://springdoc.org/")
@@ -49,7 +50,7 @@ public class SpringDocConfig {
                                 .url("https://github.com/Marcusvini370/ms-project"))
                 )
                 .tags(Arrays.asList(
-                        new Tag().name("Courses").description("Gerencia os Cursos")
+                        new Tag().name("Attendances").description("Gerencia os Atendimentos")
                 )).components(new Components()
                         .schemas(gerarSchemas())
                         .responses(gerarResponses())

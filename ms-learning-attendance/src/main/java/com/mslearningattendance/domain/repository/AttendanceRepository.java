@@ -1,6 +1,5 @@
 package com.mslearningattendance.domain.repository;
 
-import com.mslearningattendance.api.dto.AttendancesDTO;
 import com.mslearningattendance.domain.model.Attendance;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -11,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface AttendanceRepository extends CrudRepository<Attendance, UUID> {
 
-    List<AttendancesDTO> findAllByStudentId(UUID studentId);
+    List<Attendance> findByStudentId(UUID studentId);
 }
