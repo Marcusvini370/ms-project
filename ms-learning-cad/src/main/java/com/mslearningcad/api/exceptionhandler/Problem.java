@@ -20,7 +20,7 @@ public class Problem {
 	@Schema(example = "2023-02-14T09:56:28.743Z")
 	private OffsetDateTime timestamp;
 
-	@Schema(example = "https://localhost:8082/dados-invalidos")
+	@Schema(example = "https://localhost:8082/invalid-fields")
 	private String type;
 
 	@Schema(example = "Incomplete or invalid fields.")
