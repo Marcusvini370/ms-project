@@ -18,6 +18,7 @@
         <java.version>17</java.version>
         <modelmapper.version>3.1.1</modelmapper.version>
         <springdoc.version>2.0.0</springdoc.version>
+        <openfeing.version>4.0.1</openfeing.version>
     </properties>
 
     <dependencies>
@@ -61,7 +62,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>4.0.1</version>
+            <version>${openfeing.version}</version>
         </dependency>
 
         <dependency>

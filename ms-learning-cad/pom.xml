@@ -20,6 +20,8 @@
         <modelmapper.version>3.1.1</modelmapper.version>
         <spring-cloud.version></spring-cloud.version>
         <springdoc.version>2.0.0</springdoc.version>
+        <openfeing.version>4.0.1</openfeing.version>
+        <gson.version>2.10</gson.version>
     </properties>
 
     <dependencies>
@@ -58,7 +60,7 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>4.0.1</version>
+            <version>${openfeing.version}</version>
         </dependency>
 
         <dependency>
@@ -81,7 +83,7 @@
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.10</version>
+            <version>${gson.version}</version>
         </dependency>
 
     </dependencies>

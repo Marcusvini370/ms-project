@@ -5,7 +5,6 @@ import com.ms.learning.course.api.dto.input.CourseIdInput;
 import com.ms.learning.course.api.dto.input.CourseInput;
 import com.ms.learning.course.api.openapi.controller.CourseControllerOpenApi;
 import com.ms.learning.course.domain.service.CourseService;
-import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
