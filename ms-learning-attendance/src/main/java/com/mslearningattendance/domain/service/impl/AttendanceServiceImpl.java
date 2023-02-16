@@ -1,5 +1,6 @@
 package com.mslearningattendance.domain.service.impl;
 
+import com.mslearningattendance.api.dto.AttendancesDTO;
 import com.mslearningattendance.api.dto.GetAttendanceDTO;
 import com.mslearningattendance.api.dto.input.AttendanceInput;
 import com.mslearningattendance.client.CourseClient;
@@ -53,10 +54,24 @@ public class AttendanceServiceImpl implements AttendanceService {
 
         getAttendanceDTO.setFullname(student.getFullName());
         getAttendanceDTO.setCourseName(courseDTO.getCourseName());
-        attendanceRepository.findAll();
 
-        List<Attendance> attendances = attendanceRepository.findAllByStudentId(student.getStudentId());
-        log.info(attendances);
+
+       // List<Attendance> attendances = attendanceRepository.findAllById(student.getStudentId());
+        List<Attendance> attendances1 = attendanceRepository.findByStudentId(studentId);
+        List<AttendancesDTO> attendances2 = attendanceRepository.findAllByStudentId(studentId)
+            .stream().map(attendance -> {
+            AttendancesDTO attendanceResult = new AttendancesDTO();
+            attendanceResult.setClassDate(attendance.getClassDate());
+            attendanceResult.setAttendanceStatus(attendance.isAttendanceStatus());
+            return attendanceResult;
+        }).toList();
+
+        getAttendanceDTO.setAttendancesDTO(attendances2);
+
+        //log.info(attendances);
+        log.info(attendances1);
+        log.info(attendances2);
+        log.info(attendanceRepository.findAll());
        // getAttendanceDTO.setAttendancesDTO(attendances);
 
 
