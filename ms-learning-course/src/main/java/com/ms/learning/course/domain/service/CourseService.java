@@ -1,6 +1,7 @@
 package com.ms.learning.course.domain.service;
 
 import com.ms.learning.course.api.dto.CourseDTO;
+import com.ms.learning.course.api.dto.input.CourseIdInput;
 import com.ms.learning.course.api.dto.input.CourseInput;
 
 import java.util.List;
@@ -12,6 +13,6 @@ public interface CourseService {
 
     List<CourseDTO> findAllCourses();
 
-    CourseDTO save(CourseInput course);
+    CourseIdInput save(CourseInput course);
 
 }

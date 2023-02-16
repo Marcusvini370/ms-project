@@ -1,6 +1,5 @@
 package com.mslearningattendance.domain.service.impl;
 
-import com.mslearningattendance.api.dto.AttendancesDTO;
 import com.mslearningattendance.api.dto.GetAttendanceDTO;
 import com.mslearningattendance.api.dto.input.AttendanceInput;
 import com.mslearningattendance.client.CourseClient;
@@ -12,6 +11,7 @@ import com.mslearningattendance.domain.repository.AttendanceRepository;
 import com.mslearningattendance.domain.repository.StudentRepository;
 import com.mslearningattendance.domain.service.AttendanceService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,6 +20,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Log4j2
 public class AttendanceServiceImpl implements AttendanceService {
 
     private final StudentRepository studentRepository;
@@ -54,8 +55,8 @@ public class AttendanceServiceImpl implements AttendanceService {
         getAttendanceDTO.setCourseName(courseDTO.getCourseName());
         attendanceRepository.findAll();
 
-        List<Attendance> attendances = attendanceRepository.findByStudentId(student.getStudentId());
-
+        List<Attendance> attendances = attendanceRepository.findAllByStudentId(student.getStudentId());
+        log.info(attendances);
        // getAttendanceDTO.setAttendancesDTO(attendances);
 
 

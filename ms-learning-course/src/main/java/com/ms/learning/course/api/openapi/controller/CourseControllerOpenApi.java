@@ -1,6 +1,7 @@
 package com.ms.learning.course.api.openapi.controller;
 
 import com.ms.learning.course.api.dto.CourseDTO;
+import com.ms.learning.course.api.dto.input.CourseIdInput;
 import com.ms.learning.course.api.dto.input.CourseInput;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -41,6 +42,6 @@ public interface CourseControllerOpenApi {
             @ApiResponse(responseCode = "201", description = "Created course"),
             @ApiResponse(responseCode = "400", description = "Course already exists!")
     })
-     ResponseEntity<CourseDTO> createCourse(@RequestBody( description = "Representation of a new course", required = true) CourseInput course);
+     ResponseEntity<CourseIdInput> createCourse(@RequestBody( description = "Representation of a new course", required = true) CourseInput course);
 
 }

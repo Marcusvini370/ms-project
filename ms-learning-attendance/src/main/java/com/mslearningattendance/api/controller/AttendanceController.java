@@ -24,7 +24,7 @@ public class AttendanceController {
         attendanceService.registerStudentAttendance(attendanceInput, courseId, studentId);
     }
 
-    @GetMapping("/student/{studentId}/attendances")
+    @GetMapping("student/{studentId}/attendances")
     public GetAttendanceDTO getAttendancesByStudent(@PathVariable UUID studentId) {
         return attendanceService.getAttendancesByStudent(studentId);
     }

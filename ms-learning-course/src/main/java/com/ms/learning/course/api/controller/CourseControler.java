@@ -1,6 +1,7 @@
 package com.ms.learning.course.api.controller;
 
 import com.ms.learning.course.api.dto.CourseDTO;
+import com.ms.learning.course.api.dto.input.CourseIdInput;
 import com.ms.learning.course.api.dto.input.CourseInput;
 import com.ms.learning.course.api.openapi.controller.CourseControllerOpenApi;
 import com.ms.learning.course.domain.service.CourseService;
@@ -31,7 +32,7 @@ public class CourseControler implements CourseControllerOpenApi {
     }
 
     @PostMapping
-    public ResponseEntity<CourseDTO> createCourse(@RequestBody CourseInput course){
+    public ResponseEntity<CourseIdInput> createCourse(@RequestBody CourseInput course){
         return ResponseEntity.status(HttpStatus.CREATED).body(courseService.save(course));
     }
 

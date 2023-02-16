@@ -10,5 +10,5 @@ import java.util.UUID;
 @Repository
 public interface AttendanceRepository extends CrudRepository<Attendance, UUID> {
 
-    List<Attendance> findByStudentId(UUID studentId);
+    List<Attendance> findAllByStudentId(UUID studentId);
 }
